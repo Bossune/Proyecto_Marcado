@@ -31,7 +31,7 @@ function verificar_login($user,$password)
 
   function get_Sources() 
     {     
-            include("../php/conexion.php");
+            include("./php/conexion.php");
 
             $query = mysqli_query($Link, "SELECT * FROM tsource");
             while($row = mysqli_fetch_assoc($query))
@@ -44,7 +44,7 @@ function verificar_login($user,$password)
 
  function get_Sources_Usuario() 
     {     
-            include("../php/conexion.php");
+            include("./php/conexion.php");
 
             $query = mysqli_query($Link, "Select tbiblioteca.Id_registro , tsource.Titulo FROM tbiblioteca INNER JOIN tsource ON tbiblioteca.Id_Source = tsource.Id_Source Where tbiblioteca.Id_Usuario =".$_SESSION['Id']."");
             while($row = mysqli_fetch_assoc($query))

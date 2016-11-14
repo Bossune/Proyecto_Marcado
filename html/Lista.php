@@ -23,36 +23,7 @@ if (!isset($_SESSION['Usuario']))
         <link type="text/css" rel="stylesheet" href="../Resources/Estilos/Estilos.css"/>
         
         <script src="../Resources/Script/jquery-3.1.1.mins.js"></script>
-        <script>
-        
-            $(function(){ 
-                   $("#btn-guardar").click(function(){ // Esto maneja el ajax. Cuando hago click en el boton hace la consulta con la respuesta del query reescribo  la lista del usuario.
-                      
-                       var url = "../php/guardar_lista.php";
-                       $.ajax({
-                           type:"POST",
-                           url:url,
-                           data: {Id_source: $("#Sources option:selected").val()}, // Datos del post. 
-                           success: function (data) { // Si la consulta tiene exito.
-                            $("#Sources_lista").html(data); // Remplzasa el contedio del select
-                            }
-                        });
-                       });
-                $("#btn-borrar").click(function(){ // Esto maneja el ajax. Cuando hago click en el boton para buscar. Hace una consulta por post y remplaza la planilla con la respuesta del pust.
-                   var url = "../php/guardar_lista.php";
-                   $.ajax({
-                       type:"POST",
-                       url:url,
-                       data: {delete_source: $("#Sources_lista option:selected").val()}, // Datos del post. Los cuales recupera del campo rut y nombre.
-                       success: function (data) { // Si la consulta tiene exito.
-                        $("#Sources_lista").html(data); // Remplzasa el contedio del select
-                        }
-
-                   });
-              
-            });
-                });
-            </script>
+        <script src="./js/script.js"></script>
     </head>
 
     <body>
