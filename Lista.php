@@ -9,11 +9,12 @@
     <title>Lista .-</title>
 
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-primary">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Biblioteca</a>
@@ -24,17 +25,28 @@
                     <li><a href="#">Mi lista</a></li>
                     <li><a href="#">Mi cuenta</a></li>
 
-                    <form class="navbar-form navbar-left" method="GET" action="#">
+                    <form class="navbar-form navbar-left" id="right" method=" GET " action="# ">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Anime">
-                            <button type="submit" class="btn btn-default">Buscar</button>
+                            <input type="text " class="form-control " placeholder="Anime ">
+                            <button type="submit " class="btn btn-default ">Buscar</button>
                         </div>
                     </form>
             </div>
         </nav>
     </header>
     <main>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    Hola
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    Hola s </div>
+
+            </div>
+
+        </div>
+
     </main>
 
 
