@@ -1,96 +1,99 @@
 <?php
-session_start();
-error_reporting(E_ALL);
-ini_set('display_errors','1');
-
-require "./php/funciones.php";
-
-if (!isset($_SESSION['Usuario']))
-{
-    if(isset($_POST['Usuario']) && isset($_POST['Password'] ))
-    {
-        verificar_login($_POST['Usuario'],$_POST['Password']);        
-    }
-}
-
+    session_start();
+    require './php/funciones.php';
 ?>
-<!DOCTYPE html>
-<html lang="es">
+    <!DOCTYPE html>
+    <html lang="en">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Proyecto X</title>
-        <link type="text/css" rel="stylesheet" href="./Resources/Estilos/Estilos.css"/>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lista .-</title>
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <link href="css/estilo.css" rel="stylesheet">
+       
     </head>
 
     <body>
-            <header>
-                <div id="top-header">
-                    <nav>        
-                            <a href="index.php">Proyecto X</a> | 
-                            <?php
-                            if (empty($_SESSION['Usuario']))  //Si el usuario no esta logeado, muestra el login.
-                            {
-                                echo (" 
-                                 <a id=\"logingform\" href=\"./html/Registro.php\">Registrarce</a>
-							<form id=\"logingform\" method=\"post\" action=\"./index.php\">
-   									 <input id=\"logingInput\" name=\"Usuario\" type=\"text\"  placeholder=\"Usuario\">
-   									 <input id=\"logingInput\" name=\"Password\" type=\"password\" placeholder=\"Contraseña\">
-  								<button type=\"submit\" value=\"Logear\" name=\"login\">Ingresar</button>
-							</form>");   
-                            }
-                            else // Si esta logeado. en vez de mostrar el login. Muestra los favoritos , "Mi cuenta" y El Nombre del Usuario.
-                            {
-                                echo ("
-                                <a href=\"\">Favoritos</a> <a href=\"./html/Lista.php\">Mi Lista</a> |\n <a href=\"\">Mi cuenta</a> |\n
-                                <div id=\"user-status\">
-                                    <form   id=\"logingform\" action=\"./php/logout.php\" method=\"post\">
-                                        <button  type=\"submit\"  id=\"user-status\" name=\"Desconectar\" formmethod=\"post\">".$_SESSION['Usuario']."</button>
-                                    </form>
-                                </div>");
-                            }
-                            ?>
-                
-                    </nav>
+        <header>
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#">Biblioteca</a>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <ul class="nav navbar-nav">
+                        <?php if(!empty($_SESSION['Usuario'])){?>
+                        <li><a href="#">Favoritos</a></li>
+                        <li><a href="#">Mi lista</a></li>
+                        <li><a href="#">Mi cuenta</a></li>
+                        
+                        <form class="navbar-form navbar-left" method=" GET " action="# ">
+                            <div class="form-group">
+                                <input type="text " class="form-control" placeholder="Anime">
+                                <button type="submit " class="btn btn-default ">Buscar</button>
+                            </div>
+                        </form>
+                        <li id="right"><a class="btn text-uppercase" href="./php/logout.php"><?php echo $_SESSION['Usuario']?></a></li>
+                        <?php }
+                        else{?>
+                        <form class="navbar-form" method="post" action="./php/login.php" id="right">
+                            <div class="form-group">
+   						    	<input name="Usuario" require type="text" class="form-control" placeholder="Usuario">
+   							    <input name="Password" require type="password" class="form-control" placeholder="Contraseña">
+  								<input class="btn btn-default" type="submit" name="Logear" value="Logear">
+                            </div>
+						</form>
+                        <?php }?>
+                        
+                    </ul>
                 </div>
-            </header>
-            <aside>
-                <div>
-                    <h3>Menu</h3>
-                    <h3>Login</h3>
-                    <h3>Informacion del usuario/Avartar</h3>
-                    <h3>Avartar</h3>
+            </nav>
+        </header>
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <fieldset>
+                            <legend>Lista de series[DB]</legend>
+                            <form method="post">
+                                <select id="Sources">
+                                    <?php get_Sources()?>
+                 </select>
+
+                            </form>
+                            <button class="btn btn-default" id="btn-guardar">Guardar en lista</button>
+                        </fieldset>
+                    </div>
+                     <?php if(!empty($_SESSION['Usuario'])){?>
+                    <div class="col-lg-6 col-md-6">
+                        <fieldset>
+                            <legend>Lista de series[USUARIO]</legend>
+                            <form method="post">
+                                <select id="Sources_lista">
+                                        <?php get_Sources_Usuario() ;?>
+                                    </select>
+
+                            </form>
+                            <button class="btn btn-default" id="btn-borrar">Borrar de la lista</button>
+                        </fieldset>
+                    </div>
+                     <?php }
+                     else{?>
+                        <div class="col-lg-6 col-md-6">
+                            <h3>Tienes que estar logeado para ver las series en tu lista.</h3>
+                        </div>
+                     <?php } ?>
                 </div>
-            </aside>
-            <main>
-                <article>
-                    <div>
-                        <h3>Anuncios/Novedades.</h3>
-                    </div>
-                </article>
-                <article>
-                    <div>
-                        <h3>Ultimas Series Agregadas.</h3>
-                    </div>
-                </article>
-                <article>
-                    <div>
-                        <h3>Proximos Estrenos</h3>
-                    </div>
-                </article>
-                <article>
-                    <div>
-                        <h3>ETC......</h3>
-                    </div>
-                </article>
-                <article>
-                    <div>
-                        <h3>ETC......</h3>
-                    </div>
-                </article>
-            </main>
+
+            </div>
+        </main>
+
+        <script src="./js/jquery-3.1.1.min.js "></script>
+        <script src="./js/bootstrap.js "></script>
+        <script src="./js/script.js"></script>
 
     </body>
 
     </html>
-    

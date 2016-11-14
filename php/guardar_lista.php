@@ -1,7 +1,6 @@
 <?php
 session_start();
-echo $_SERVER['DOCUMENT_ROOT'];
-chdir($_SERVER['DOCUMENT_ROOT']."/proyecto/");   
+chdir($_SERVER['DOCUMENT_ROOT']."/act07/");   
 include "./php/funciones.php";
  if(!empty($_POST["Id_source"]))
  {
