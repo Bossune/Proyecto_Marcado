@@ -71,7 +71,7 @@
             </div>
         </div>
         <div class="row ">
-            <div class="col-lg-4 col-lg-offset-0 col-md-4 col-sm-6 col-xs-12 "><img class="img-responsive " src="assets/img/karasuno.png " id="anime_portada "></div>
+            <div class="col-lg-4 col-lg-offset-0 col-md-4 col-sm-6 col-xs-12 "><img class="img-responsive " src="./php/get_img.php?id=<?php echo $Anime['Id_Source']?>" id="anime_portada "></div>
             <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
                 <h3>Descripción: </h3>
                 <p class="text-left " id="descripcion "><?php echo $Anime['Descripcion'];   ?>
