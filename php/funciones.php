@@ -14,7 +14,7 @@ function verificar_login($user,$password)
         {
             $_SESSION['Usuario'] = $row['Usuario'];
             $_SESSION['Id'] = $row['Id'];
-            header("location:./index.php");
+            header("location:../index.php");
             
         }
         else
@@ -29,6 +29,49 @@ function verificar_login($user,$password)
 
 }
 
+  function Buscar_Source($Anime = "")
+  {
+    include './php/conexion.php';
+    if ($Anime == "")
+    {
+        $query = mysqli_query($Link,"Select * from tSource");
+    }
+    else
+    {
+        $query = mysqli_query($Link,"Select * from tSource where Titulo like '%".$Anime."%'"); 
+    }
+    while($row = mysqli_fetch_assoc($query))
+    {
+        echo "<tr class=\"active\">
+                    <td> <img class=\"img-thumbnail img-responsive\" src=\"assets/img/C:\Bitnami\wampstack-5.6.26-2\apache2\htdocs\Proyecto - copia\assets\img\karasuno.png\" width=\"100\"></td>
+                    <td rowspan=\"1\"><a href=\"./Anime.php?id=".$row['Id_Source']."\">".$row['Titulo']."</a></td>
+                    <td>".$row['Nota']."/10 </td>
+                    <td rowspan=\"1\">
+                        <button class=\"btn btn-success btn-block\" type=\"button\">Agregar a Libreria</button>
+                    </td>
+        </tr>";
+
+
+    }
+  }
+
+  function get_Anime($id = "")
+  {
+      include './php/conexion.php';
+    if ($id == "")
+    {
+        echo "Falta id.";
+    }
+    else
+    {
+        $query = mysqli_query($Link,"Select * from tSource where Id_Source = $id"); 
+        $row = mysqli_fetch_assoc($query);
+
+        return $row;
+    }
+    
+    
+  }
   function get_Sources() 
     {     
             include("./php/conexion.php");

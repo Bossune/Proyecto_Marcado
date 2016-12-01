@@ -1,0 +1,3 @@
+La base de datos se llama libreria.
+En el index no hay nada, solo esta la opcion para logearse en la barra superior, usuario admin, password admin
+Se pueden buscar cosas. Solo hay 2 series en la db. 

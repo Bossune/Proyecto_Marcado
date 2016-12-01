@@ -54,8 +54,37 @@
             </div>
         </div>
     </nav>
-
-
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr class="info">
+                                <th> </th>
+                                <th>Nombre </th>
+                                <th>Nota </th>
+                                <th>Agregar </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php 
+                                if (!empty($_GET['Anime']))
+                                {
+                                    Buscar_Source($_GET['Anime']);
+                                }
+                                else
+                                {
+                                    Buscar_Source();
+                                }
+                            
+                             ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

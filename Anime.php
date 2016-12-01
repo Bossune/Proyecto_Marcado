@@ -1,6 +1,13 @@
 <?php
     session_start();
     require './php/funciones.php';
+
+    if(!empty($_GET['id']))
+    {
+        $Anime  = get_Anime($_GET['id']);
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -54,10 +61,52 @@
             </div>
         </div>
     </nav>
-
-
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <div class="container ">
+        <?php 
+            if (!empty($Anime)){        
+        ?>
+        <div class="row ">
+            <div class="col-md-12 ">
+                <h1 class="text-center "><?php echo $Anime['Titulo'] ; ?></h1>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-lg-4 col-lg-offset-0 col-md-4 col-sm-6 col-xs-12 "><img class="img-responsive " src="assets/img/karasuno.png " id="anime_portada "></div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 ">
+                <h3>Descripción: </h3>
+                <p class="text-left " id="descripcion "><?php echo $Anime['Descripcion'];   ?>
+             </p>
+            </div>
+        </div>
+        <div class="row ">
+            <div class="col-md-6 ">
+                <h3 class="text-center "><?php echo $Anime['Nota'];   ?></h3>
+            </div>
+            <!--
+            <div class="col-md-6 ">
+                <h3 class="text-center ">Nota del usuario</h3>
+            </div>
+            -->
+        </div>
+        <div class="row ">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <button class="btn btn-success btn-block " type="button ">Agregar a la Libreria</button>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                <!--<button class="btn btn-danger btn-block " type="button ">Borrar de la libreria (Aparece solo si esta en la libreria)</button>-->
+            </div>
+        </div>
+            <?php } 
+            else{
+            ?>
+            <h2> No se encuenta el id la base de datos</h2>
+            <?php 
+            }
+            ?>
+            
+    </div>
+    <script src="assets/js/jquery.min.js "></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js "></script>
 </body>
 
 </html>
