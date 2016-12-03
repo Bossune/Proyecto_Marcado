@@ -58,8 +58,8 @@ function verificar_login($user,$password)
 
   function get_Anime($id = "")
   {
-      include './php/conexion.php';
-    if ($id == "")
+    include './php/conexion.php';
+    if (empty($id))
     {
         echo "Falta id.";
     }
@@ -72,6 +72,31 @@ function verificar_login($user,$password)
     }
     
     
+  }
+
+  function get_Libreria($id_anime,$id_usuario)
+  {
+    if(empty($id_anime) && empty($id_usuario))
+    {
+        echo "Falta anime y Usuario";
+    }
+    else
+    {
+        include './php/conexion.php';
+        $consulta = "Select * from tBiblioteca where Id_Source = $id_anime AND Id_Usuario = $id_usuario";
+        if($query = mysqli_query($Link,$consulta))
+        {
+            $row = mysqli_fetch_object($query);
+            return $row;
+        } 
+        else
+        {
+            return NULL;
+        }
+
+    }
+
+  
   }
   function get_Sources() 
     {     
