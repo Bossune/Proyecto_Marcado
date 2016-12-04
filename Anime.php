@@ -5,7 +5,7 @@
     if(!empty($_GET['id']) && !empty($_SESSION['Id']))
     {
         $Anime  = get_Anime($_GET['id']);
-        $Anime_Usuario = get_Libreria($_GET['id'],$_SESSION['Id']);
+        $Anime_Usuario = get_AnimeUsuario($_GET['id'],$_SESSION['Id']);
     }
     else
     {
@@ -73,6 +73,7 @@
             <?php 
             if (!empty($Anime)){        
         ?>
+            <input id="id_anime" type="hidden" value="<?php echo $Anime['Id_Source'];?>">
             <div class="row ">
                 <div class="col-md-12 ">
                     <h1 class="text-center ">
@@ -99,11 +100,11 @@
                             <h4 class="text-center">Nota: <?php echo $Anime['Nota']?></h4>
                         </div>
                         <div class="col-md-6">
-                            <h4 class="text-center">Tu Nota: <?php echo $Anime_Usuario -> Nota_personal?></h4>
+                            <h4 id="TuNota" class="text-center">Tu Nota: <input id="nota" disabled="disabled" type="number" min=1 max=10 step=0.1  value="<?php echo $Anime_Usuario -> Nota_personal?>"></h4>
                         </div>
                         <?php }?>
                     </div>
-                    <div class="row">
+                    <div class="row"> 
                         <div class="col-md-6">
                             <h4 class="text-center">N° Capitulos: <?php echo $Anime['Capitulos']?></h4>
                         </div>
@@ -111,6 +112,14 @@
                             <h4 class="text-center">Duracion Capitulo: <?php echo $Anime['Duracion_Capitulos']?> min.</h4>
                         </div>
                     </div>
+                    <?php if(!empty($Anime_Usuario)){?>
+                     <div class="row"> 
+                        <div class="col-md-6 col-lg-12" id="Div_Comentario">
+                            <textarea disabled='disabled' id="Comentario" class="form-control"><?php echo $Anime_Usuario->Comentarios ;?></textarea>
+                        </div>
+                         
+                    </div>
+                    <?php }?>
 
                 </div>
             </div>
@@ -139,6 +148,7 @@
         </div>
         <script src="assets/js/jquery.min.js "></script>
         <script src="assets/bootstrap/js/bootstrap.min.js "></script>
+        <script src="./assets/js/actualizacion.js"></script>
     </body>
 
     </html>

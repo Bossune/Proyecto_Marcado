@@ -29,6 +29,26 @@ function verificar_login($user,$password)
 
 }
 
+
+  function get_Libreria()
+  {
+    include './php/conexion.php';
+    $query = mysqli_query($Link,"Select tSource.*, tBiblioteca.Nota_personal from tSource INNER JOIN tBiblioteca ON tSource.Id_Source = tBiblioteca.Id_Source where tBiblioteca.Id_Usuario = ".$_SESSION['Id']);
+    while($row = mysqli_fetch_assoc($query))
+    {
+        echo "<tr class=\"active\">
+                    <td> <img class=\"img-thumbnail img-responsive\" src=\"./php/get_img.php?id=".$row['Id_Source']."\" width=\"120\"></td>
+                    <td><a href=\"./Anime.php?id=".$row['Id_Source']."\">".$row['Titulo']."</a></td>
+                    <td>".$row['Capitulos']."</td>
+                    <td>".$row['Nota']."/10 </td>
+                    <td>".$row['Nota_personal']."/10 </td>
+                    <td>
+                        <a href=\"./php/Borrar_Anime.php?id=".$row['Id_Source']."\"><button class=\"btn btn-danger btn-block\" type=\"button\">Borrar de libreria Libreria</button></a>
+                    </td>
+        </tr>";
+    }  
+  }
+
   function Buscar_Source($Anime = "")
   {
     include './php/conexion.php';
@@ -47,7 +67,7 @@ function verificar_login($user,$password)
                     <td rowspan=\"1\"><a href=\"./Anime.php?id=".$row['Id_Source']."\">".$row['Titulo']."</a></td>
                     <td>".$row['Nota']."/10 </td>
                     <td rowspan=\"1\">
-                        <button class=\"btn btn-success btn-block\" type=\"button\">Agregar a Libreria</button>
+                        <a href=\"./php/Agregar_Anime.php?id=".$row['Id_Source']."\"><button class=\"btn btn-success btn-block\" type=\"button\">Agregar a Libreria</button></a>
                     </td>
         </tr>";
 
@@ -73,7 +93,7 @@ function verificar_login($user,$password)
     
   }
 
-  function get_Libreria($id_anime,$id_usuario)
+  function get_AnimeUsuario($id_anime,$id_usuario)
   {
     if(empty($id_anime) && empty($id_usuario))
     {

@@ -57,7 +57,31 @@
             </div>
         </div>
     </nav>
-
+   <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Tu Libreria:</h3></div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Titulo</th>
+                                <th>Capitulos</th>
+                                <th>Nota</th>
+                                <th>Nota Personal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php get_Libreria();?>
+                        
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>         
 
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>

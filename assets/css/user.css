@@ -1,22 +1,35 @@
 @media (min-width:1200px) {
-  img#anime_portada.img-responsive{
-    margin-left:20px;
-  }
+    img#anime_portada.img-responsive {
+        margin-left: 20px;
+    }
 }
 
 @media (max-width:991px) {
-  img#anime_portada.img-responsive{
-    margin-left:10px;
-  }
-}
-
-p#descripcion{
-  padding-left:10px;
+    img#anime_portada.img-responsive {
+        margin-left: 10px;
+    }
 }
 
 @media (max-width:767px) {
-  p#descripcion{
-    padding-left:0px;
-  }
+    p#descripcion {
+        padding-left: 0px;
+    }
 }
 
+p#descripcion {
+    padding-left: 10px;
+}
+
+input[disabled='disabled'] {
+    background: transparent;
+    border: none;
+}
+
+#Comentario[disabled='disabled'] {
+    background: transparent;
+    border: none;
+}
+
+#Comentario {
+    min-width: 100%;
+}
