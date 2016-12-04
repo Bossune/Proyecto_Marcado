@@ -118,13 +118,13 @@
                 
                 <?php if(empty($Anime_Usuario)){?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                    <button class="btn btn-success btn-block " type="button ">Agregar a la Libreria</button>
+                    <a href="./php/Agregar_Anime.php?id=<?php echo $_GET['id']; ?>"><button class="btn btn-success btn-block " type="button ">Agregar a la Libreria</button></a>
                 </div>
                 <?php }
                 else
                 {?>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-                    <button class="btn btn-danger btn-block " type="button ">Borrar de la libreria</button>
+                    <a href="./php/Borrar_Anime.php?id=<?php echo $_GET['id']; ?>"><button class="btn btn-danger btn-block " type="button ">Borrar de la libreria</button></a>
                 </div>
                 <?php }?>
             </div>

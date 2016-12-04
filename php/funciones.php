@@ -11,7 +11,6 @@ function verificar_login($user,$password)
     {   
         if($row = mysqli_fetch_assoc($query))
         {
-            chdir($_SERVER['DOCUMENT_ROOT']."/act07/");   
 
             $_SESSION['Usuario'] = $row['Usuario'];
             $_SESSION['Id'] = $row['Id'];

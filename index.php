@@ -45,11 +45,17 @@
                 </ul>
                 <?php }
                     else{?>
+                <form class="navbar-form navbar-right">
+                    <a href="./registro.php"><button class="btn btn-info" type="button">Registrate! </button></a>
+                </form>
                 <form class="navbar-form navbar-right visible-lg-inline-block" action="./php/login.php" method="post">
                     <input class="form-control" type="text" name="Usuario" required="" placeholder="Usuario" autofocus="" autocomplete="on"><span> </span>
                     <input class="form-control" type="password" name="Password" required="" placeholder="Contraseña">
                     <button class="btn btn-success" type="submit">Ingresar </button>
+                
                 </form>
+                    
+                
                     <?php }?>
             </div>
         </div>
