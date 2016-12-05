@@ -33,3 +33,7 @@ input[disabled='disabled'] {
 #Comentario {
     min-width: 100%;
 }
+
+.carousel-inner img {
+    margin: auto;
+}

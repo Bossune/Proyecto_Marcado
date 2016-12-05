@@ -29,6 +29,41 @@ function verificar_login($user,$password)
 
 }
 
+  function get_cAnime()
+  {
+       $contador = 1;
+        require "./php/conexion.php";
+        $Consulta = "SELECT * FROM tSource ORDER BY Id_Source DESC LIMIT 4";
+        
+        if($resultado = mysqli_query($Link,$Consulta))
+        {
+            while ($row = mysqli_fetch_object($resultado))
+            {
+                if ($contador == 1)
+                {
+                 echo "<div class=\"item active\">
+    				 <a class=\"img-responsive\"  href=\"./Anime.php?id=$row->Id_Source\"> <img class=\"img-responsive\" src=\"./php/get_img.php?id=$row->Id_Source\" alt=\"...\"></a>
+    				  <div class=\"carousel-caption\">
+    					<h3>$row->Titulo<h3>
+    				  </div>
+    				</div>";
+                }
+                else
+                {
+                    echo "<div class=\"item\">
+    				  <a href=\"./Anime.php?id=$row->Id_Source\"><img class=\"img-responsive\" src=\"./php/get_img.php?id=$row->Id_Source\" alt=\"...\"></a>
+
+    				  <div class=\"carousel-caption\">
+    					<h3>$row->Titulo<h3>
+    				  </div>
+    				</div>";
+                }
+                $contador += 1;
+    				
+            }    
+        }
+    }
+
 
   function get_Libreria()
   {

@@ -2,10 +2,13 @@
     session_start();
     require './php/funciones.php';
 
-    if(!empty($_GET['id']) && !empty($_SESSION['Id']))
+    if(!empty($_GET['id']))
     {
         $Anime  = get_Anime($_GET['id']);
-        $Anime_Usuario = get_AnimeUsuario($_GET['id'],$_SESSION['Id']);
+        if(!empty($_SESSION['Id']))
+        {
+            $Anime_Usuario = get_AnimeUsuario($_GET['id'],$_SESSION['Id']);
+        }
     }
     else
     {

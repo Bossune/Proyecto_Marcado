@@ -48,7 +48,7 @@
     </nav>
     <div class="container">
         <div class="form-group"></div>
-        <form class="bootstrap-form-with-validation" method="post" action="./php/Registro.php">
+        <form id="Registro" class="bootstrap-form-with-validation" enctype="multipart/form-data" method="post" action="./php/Registro.php">
             <h2 class="text-center">Registro de Usuario</h2>
             <div class="form-group">
                 <label class="control-label" for="text-input">Nombre de Usuario:</label>
@@ -56,28 +56,29 @@
             </div>
             <div class="form-group">
                 <label class="control-label" for="password-input">Contraseña: </label>
-                <input class="form-control" type="password" name="Contraseña" required="" id="password-input">
+                <input class="form-control" type="password" id="pass" name="Contraseña" required="" id="password-input">
             </div>
             <div class="form-group">
                 <label class="control-label" for="password-input">Retipa la contraseña </label>
-                <input class="form-control" type="password" name="Contraseña_repetido" required="" id="email-input">
+                <input class="form-control" type="password" id="pass_re" name="Contraseña_repetido" required="" id="email-input">
             </div>
             <div class="form-group">
                 <label class="control-label" for="email-input">Email:</label>
                 <input class="form-control" type="email" name="Email" required="" id="email-input">
             </div>
             <div class="form-group">
-                <label class="control-label" for="file-input">Avatar:(No obligatorio):</label>
-                <input type="file" name="Avatar" id="file-input">
+                <label class="control-label" for="Avatar">Avatar:(No obligatorio):</label>
+                <input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+                <input type="file" name="subida" id="Avatar">
             </div>
             <div class="form-group">
-                <button class="btn btn-primary" type="submit">Registrarte </button>
+                <button id="enviar" class="btn btn-primary" type="submit">Registrarte </button>
             </div>
         </form>
-        <form></form>
     </div>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/Bloqueo_form.js"></script>
 </body>
 
 </html>
